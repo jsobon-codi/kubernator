@@ -61,6 +61,7 @@ export function apiFlagsSet(state, action) {
 }
 
 export async function apiFetch(url, options = {}, parser = 'json') {
+  url = '/api' + url  // required by NGINX config
   const netResponse = await fetch(url, options);
   if (netResponse.ok) return netResponse[parser]();
   else {
